@@ -16,18 +16,21 @@ def predict_labels(
     data, model_name="textattack/bert-base-uncased-SST-2", bert_type="bert-base-uncased"
 ):
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    model.cuda() if torch.cuda.is_available() else model.cpu()
+    device = (
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
+    model.to(device)
+    # model.cuda() if torch.cuda.is_available() else model.cpu()
     tokenizer = AutoTokenizer.from_pretrained(bert_type)
 
     # Tokenize inputs
     embeddings = tokenizer(list(data), return_tensors="pt", padding=True).input_ids
     # Predict
-    prediction = (
-        model(embeddings.cuda() if torch.cuda.is_available() else embeddings.cpu())
-        .logits.detach()
-        .cpu()
-        .numpy()
-    )
+    prediction = model(embeddings.to(device)).logits.detach().cpu().numpy()
     # Normalise to derive scores
     scores = (np.exp(prediction).T / np.exp(prediction).sum(-1)).T
     # Use sigmoid to select max score
@@ -67,7 +70,9 @@ def main(params: dict):
     )
 
     # initialise the SHAP explainer
-    explainer = shap.Explainer(predict_labels, tokenizer)
+    explainer = shap.Explainer(
+        model=predict_labels, masker=tokenizer, link=shap.links.logit
+    )
 
     # calculate the SHAP values
     orig_shap_values = explainer(orig_x_test, fixed_context=1)
