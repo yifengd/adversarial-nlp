@@ -22,10 +22,10 @@ def parse_args() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(description="AttackDetect")
     parser.add_argument("--model_name", default="textattack/bert-base-uncased-SST-2")
-    parser.add_argument("--attack_file_path")
-    parser.add_argument("--output_file_path")
     parser.add_argument("--num_sentences", default="-1")
     parser.add_argument("--bert_type", default="bert-base-uncased")
+    parser.add_argument("--attack_file_path", required=True)
+    parser.add_argument("--output_file_path", required=True)
 
     params = parser.parse_args()
 
