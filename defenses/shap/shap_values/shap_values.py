@@ -35,12 +35,10 @@ def predict_labels(
     return val
 
 
-def transform_attack_data(adv_examples):
+def transform_attack_data(adv_examples, num_sentences):
     # Filter out skipped and unsuccessful attacks
     adv_examples = adv_examples[adv_examples["result_type"] == "Successful"]
-
-    if len(adv_examples) == 0:
-        raise ValueError("No successful attacks found")
+    adv_examples = adv_examples.head(num_sentences)
 
     orig_x_test = np.array(adv_examples["original_text"])
     orig_y_test = np.array(adv_examples["original_output"])
@@ -61,10 +59,12 @@ def pad_embeddings(shap_values, max_tokens: int = 200):
 
 def main(params: dict):
     tokenizer = AutoTokenizer.from_pretrained(params.bert_type)
-    attack_data = pd.read_table(params.attack_file_path).head(int(params.num_sentences))
+    attack_data = pd.read_table(params.attack_file_path)
 
     # transform the attack data to be used for SHAP
-    orig_x_test, _, adv_x_test, _ = transform_attack_data(attack_data)
+    orig_x_test, _, adv_x_test, _ = transform_attack_data(
+        attack_data=attack_data, num_sentences=int(params.num_sentences)
+    )
 
     # initialise the SHAP explainer
     explainer = shap.Explainer(predict_labels, tokenizer)
