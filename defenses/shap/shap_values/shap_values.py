@@ -63,7 +63,7 @@ def main(params: dict):
 
     # transform the attack data to be used for SHAP
     orig_x_test, _, adv_x_test, _ = transform_attack_data(
-        attack_data=attack_data, num_sentences=int(params.num_sentences)
+        adv_examples=attack_data, num_sentences=int(params.num_sentences)
     )
 
     # initialise the SHAP explainer
