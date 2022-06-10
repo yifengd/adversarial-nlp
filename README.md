@@ -11,4 +11,5 @@ tbd
 ## Code usage guide
 tbd
 ## Miscellany
-tbd
+### SHAP Approach
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yifengd/adversarial-nlp/blob/master/defenses/shap/shap.ipynb)
