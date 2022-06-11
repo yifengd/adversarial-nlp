@@ -73,7 +73,7 @@ def main(params: dict):
     explainer = shap.Explainer(
         model=predict_labels,
         masker=tokenizer,
-        link=shap.links.logit,
+        # link=shap.links.logit,
     )
 
     # calculate the SHAP values
