@@ -12,17 +12,19 @@ logger = logging.getLogger("attackdetect")
 logger.setLevel(logging.INFO)
 
 
+def check_m1_mac():
+    try:
+        mps = torch.backends.mps.is_available()
+    except:
+        mps = False
+    return mps
+
+
 def predict_labels(
     data, model_name="textattack/bert-base-uncased-SST-2", bert_type="bert-base-uncased"
 ):
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    device = (
-        "cuda"
-        if torch.cuda.is_available()
-        else "mps"
-        if torch.backends.mps.is_available()
-        else "cpu"
-    )
+    device = "cuda" if torch.cuda.is_available() else "mps" if check_m1_mac() else "cpu"
     model.to(device)
     # model.cuda() if torch.cuda.is_available() else model.cpu()
     tokenizer = AutoTokenizer.from_pretrained(bert_type)
