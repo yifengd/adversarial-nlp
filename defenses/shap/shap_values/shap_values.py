@@ -71,7 +71,7 @@ def main(params: dict):
 
     # initialise the SHAP explainer
     explainer = shap.Explainer(
-        model=predict_labels, masker=tokenizer, link=shap.links.logit
+        model=predict_labels, masker=tokenizer, link=shap.links.logit, algorithm="tree"
     )
 
     # calculate the SHAP values
