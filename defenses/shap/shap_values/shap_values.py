@@ -74,7 +74,6 @@ def main(params: dict):
         model=predict_labels,
         masker=tokenizer,
         link=shap.links.logit,
-        algorithm="exact",
     )
 
     # calculate the SHAP values
