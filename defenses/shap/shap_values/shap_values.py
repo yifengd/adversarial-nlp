@@ -74,7 +74,7 @@ def main(params: dict):
         model=predict_labels,
         masker=tokenizer,
         link=shap.links.logit,
-        algorithm="gradient",
+        algorithm="partition",
     )
 
     # calculate the SHAP values
