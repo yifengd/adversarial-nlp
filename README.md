@@ -6,7 +6,9 @@ Niklas Hölterhoff \
 Karl Richter**
 
 ## Introduction
-tbd
+Methods used:
+- WDR
+- SHAP
 
 ## Code usage guide
 tbd
