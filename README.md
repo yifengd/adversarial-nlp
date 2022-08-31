@@ -32,3 +32,4 @@ tbd
 
 This work builds heavily on the [WDR](https://github.com/javirandor/wdr) repository by Mosca et al.
 
+Note: The `StyleAttack.zip` archive is a copy of https://github.com/yifengd/StyleAttack, which is a fork of https://github.com/thunlp/StyleAttack. The copy is included for submission purposes only.
