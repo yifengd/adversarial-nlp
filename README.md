@@ -1,10 +1,8 @@
 # Adversarial Text in NLP: Improving robustness via XAI
 
-Code for the paper "Improving Adversarial Robustness against Sentence-level Text Attacks using Explainable AI" by
+Code for the paper "Improving Adversarial Robustness against Sentence-level Text Attacks using Explainable AI".
 
-**Yifeng Dong \
-Niklas Hölterhoff \
-Karl Richter**
+Authors: Yifeng Dong, Niklas Hölterhoff, Karl Richter
 
 ## Code usage guide
 
