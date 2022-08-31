@@ -2,7 +2,7 @@
 
 Code for the paper "Improving Adversarial Robustness against Sentence-level Text Attacks using Explainable AI".
 
-Authors: Yifeng Dong, Niklas Hölterhoff, Karl Richter
+**Authors:** Yifeng Dong, Niklas Hölterhoff, Karl Richter
 
 ## Code usage guide
 
@@ -24,7 +24,7 @@ tbd
 
 - To generate your own StyleAdv adversarial samples, use the `attacks/styleadv/StyleAdv.ipynb` notebook.
 
-- If you want to use more data from the [Yoo et. al. benchmark](), use the `attacks/Benchmark_Datasets.ipynb` notebook to preprocess the data.
+- If you want to use more data from the [Yoo et. al. benchmark](https://github.com/bangawayoo/adversarial-examples-in-text-classification), use the `attacks/Benchmark_Datasets.ipynb` notebook to preprocess the data.
 
 - To download more corpuses from Huggingface, use the `attacks/Huggingface_Datasets.ipynb` notebook.
 
