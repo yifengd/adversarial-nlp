@@ -10,7 +10,7 @@ Code for the paper "Improving Adversarial Robustness against Sentence-level Text
 
 - This codebase is designed for use with Google Colab and Google Drive. Each `.ipynb` notebook should be opened in Google Colab.
 
-- The codebase reads from and writes to your Google Drive, to a folder named `AdversarialXAI`. Before running the code, unzip and upload the `data/AdversarialXAI.zip` folder to your Google Drive. If you do this, you can start running the defense methods immediately.
+- The codebase reads from and writes to your Google Drive, to a folder named `AdversarialXAI` in the root directory. Before running the code, unzip and upload the `data/AdversarialXAI.zip` folder to your Google Drive. If you do this, you can start running the defense methods immediately.
 
 ### Running the WDR-based methods
 
